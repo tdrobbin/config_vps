@@ -10,8 +10,10 @@ source $HOME/.bashrc
 
 # install miniconda
 # choose all default settings so everything after works
+echo 'installing miniconda'
 curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
+echo 'installation done'
 
 # add conda to path
 echo export PATH=$PATH:$HOME/miniconda3/bin >> $HOME/.bashrc
@@ -23,5 +25,5 @@ source $HOME/.bashrc
 conda create -n py3 python=3
 
 # activate and run simpler server
-conda activate py3
+source activate py3
 python -c "import sys; print(sys.executable)"
