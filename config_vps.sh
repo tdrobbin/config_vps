@@ -2,7 +2,7 @@
 
 # set and persist sda_bas env var to use by other apps
 # export SDA_BASE = $HOME/sda_base
-echo export SDA_BASE = $HOME/sda_base >> $HOME/.bashrc
+echo export SDA_BASE=$HOME/sda_base >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # install miniconda
