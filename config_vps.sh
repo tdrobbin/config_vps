@@ -27,3 +27,58 @@ conda create -n py3 python=3
 # activate and run simpler server
 source activate py3
 python -c "import sys; print(sys.executable)"
+
+# download sdacore
+git clone https://gitlab.com/tdrobbin/sys.git
+
+# download sda prod
+git clone https://gitlab.com/tdrobbin/sdaprod.git
+
+# download sda prod
+git clone https://gitlab.com/tdrobbin/sdaprod_data.git
+
+# add both to pythonpath
+echo export PYTHONPATH=$PYTHONPATH:$HOME/sdacore >> $HOME/.bashrc
+echo export PYTHONPATH=$PYTHONPATH:$HOME/sdaprod >> $HOME/.bashrc
+
+# activate installation
+source $HOME/.bashrc
+
+# create sda prod env, which will work for sda
+conda env create -f $HOME/sdaprod/sdaprod_env.yml
+
+source activate sdaprod
+
+cd sdaprod_data
+
+
+# https://superset.incubator.apache.org/installation.html
+sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip libsasl2-dev libldap2-dev
+
+# install superset
+conda create -n superset python=3
+conda activate superset
+pip install superset
+pip install supervisor
+
+# Install superset
+pip install superset
+
+# Create an admin user (you will be prompted to set username, first and last name before setting a password)
+fabmanager create-admin --app superset
+
+# Initialize the database
+superset db upgrade
+
+# Load some data to play with
+superset load_examples
+
+# Create default roles and permissions
+superset init
+
+# create supervisor
+
+
+
+
+
