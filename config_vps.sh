@@ -7,7 +7,7 @@ source $HOME/.bashrc
 
 # install miniconda
 curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda2-4.3.31-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
 
 # activate installation
 source $HOME/.bashrc
