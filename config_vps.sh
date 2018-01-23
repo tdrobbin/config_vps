@@ -46,10 +46,13 @@ source $HOME/.bashrc
 
 # create sda prod env, which will work for sda
 conda env create -f $HOME/sdaprod/sdaprod_env.yml
+conda env create -f $HOME/sdaprod/supervisor_env.yml
+conda env create -f $HOME/sdaprod/superset_env.yml
 
-source activate sdaprod
 
-cd sdaprod_data
+# source activate sdaprod
+
+# cd sdaprod_data
 
 
 # https://superset.incubator.apache.org/installation.html
@@ -76,7 +79,9 @@ superset load_examples
 # Create default roles and permissions
 superset init
 
-# create supervisor
+# create and activate supervisor
+cd sdaprod
+source activate supervisor
 
 
 
