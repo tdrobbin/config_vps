@@ -31,7 +31,7 @@ source $HOME/.bashrc
 # python -c "import sys; print(sys.executable)"
 
 # download sdacore
-git clone https://gitlab.com/tdrobbin/sys.git
+git clone https://gitlab.com/tdrobbin/sdacore.git
 
 # download sda prod
 git clone https://gitlab.com/tdrobbin/sdaprod.git
