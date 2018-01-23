@@ -2,6 +2,8 @@
 
 # set and persist sda_bas env var to use by other apps
 # export SDA_BASE = $HOME/sda_base
+echo 'running script to configure new server for sda production'
+
 echo export SDA_BASE=$HOME/sda_base >> $HOME/.bashrc
 echo export SUPERVISOR_BASE=$HOME/supervisor_base >> $HOME/.bashrc
 echo export SUPERSET_BASE=$HOME/superset_base >> $HOME/.bashrc
@@ -22,11 +24,11 @@ echo export PATH=$PATH:$HOME/miniconda3/bin >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # install conda environments
-conda create -n py3 python=3
+# conda create -n py3 python=3
 
 # activate and run simpler server
-source activate py3
-python -c "import sys; print(sys.executable)"
+# source activate py3
+# python -c "import sys; print(sys.executable)"
 
 # download sdacore
 git clone https://gitlab.com/tdrobbin/sys.git
@@ -35,7 +37,7 @@ git clone https://gitlab.com/tdrobbin/sys.git
 git clone https://gitlab.com/tdrobbin/sdaprod.git
 
 # download sda prod
-git clone https://gitlab.com/tdrobbin/sdaprod_data.git
+# git clone https://gitlab.com/tdrobbin/sdaprod_data.git
 
 # add both to pythonpath
 echo export PYTHONPATH=$PYTHONPATH:$HOME/sdacore >> $HOME/.bashrc
@@ -44,11 +46,9 @@ echo export PYTHONPATH=$PYTHONPATH:$HOME/sdaprod >> $HOME/.bashrc
 # activate installation
 source $HOME/.bashrc
 
-# create sda prod env, which will work for sda
+# create all conda envs
 conda env create -f $HOME/sdaprod/sdaprod_env.yml
-conda env create -f $HOME/sdaprod/supervisor_env.yml
-conda env create -f $HOME/sdaprod/superset_env.yml
-
+# conda env create -f $HOME/sdaprod/supervisor_env.yml
 
 # source activate sdaprod
 
@@ -62,10 +62,13 @@ sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip
 conda create -n superset python=3
 conda activate superset
 pip install superset
-pip install supervisor
+
+conda create -n supervisor python=2 supervisor
+# pip install supervisor
 
 # Install superset
-pip install superset
+# pip install superset
+conda activate superset
 
 # Create an admin user (you will be prompted to set username, first and last name before setting a password)
 fabmanager create-admin --app superset
